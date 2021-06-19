@@ -63,6 +63,10 @@
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>njol-repo</id>
+            <url>http://maven.njol.ch/repo/</url>
+        </repository>
     </repositories>
 
     <dependencies>

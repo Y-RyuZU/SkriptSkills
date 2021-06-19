@@ -16,15 +16,19 @@ public final class SkriptSkills extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
-        boolean already = false;
         for(SkriptAddon a : Skript.getAddons()) {
             if(a.plugin.getName().equals(plugin.getName())) {
-                already = true;
                 addon = a;
                 break;
             }
         }
-        if(!already) { addon = Skript.registerAddon(this); }
+        if(addon == null) {
+            addon = Skript.registerAddon(this);
+        } else {
+            Skript.getAddons().remove(addon);
+            addon = Skript.getAddonInstance();
+        }
+
         try {
             addon.loadClasses("skriptskills.skriptskills", "Skills");
         } catch (IOException e) {
