@@ -22,4 +22,9 @@ public abstract class Continuous extends Effect {
         Continuous.put(p , getContinuous(p , interval) + 1);
         ContinuousTime.put(p , System.currentTimeMillis());
     }
+
+    public static void setContinuous(Player p , int continuous) {
+        Continuous.put(p , continuous);
+        ContinuousTime.put(p , System.currentTimeMillis());
+    }
 }

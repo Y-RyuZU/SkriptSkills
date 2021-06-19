@@ -49,6 +49,7 @@ public class AquariumCuttar extends Continuous {
         for (Player p : player.getAll(event)) {
             int slot = p.getInventory().getHeldItemSlot();
             ItemStack item = p.getInventory().getItemInMainHand();
+            addContinuous(p , 4 * 20);
             BukkitRunnable runnable = new BukkitRunnable() {
                 int count = 1;
                 int angle = 270;
@@ -63,6 +64,7 @@ public class AquariumCuttar extends Continuous {
                     if(Utilities.getBetweenNumber(count , 3, 3) && Continuous == 1) {
                         Vector dir2 = p.getEyeLocation().getDirection();
                         if(dir2.equals(dir)) {
+                            setContinuous(p , 0);
                             cancel();
                         }
                         v = dir.clone().midpoint(dir2).normalize();
@@ -94,6 +96,7 @@ public class AquariumCuttar extends Continuous {
                     if(Utilities.getBetweenNumber(count , 3, 3) && Continuous == 2) {
                         Vector dir2 = p.getEyeLocation().getDirection();
                         if(dir2.equals(dir)) {
+                            setContinuous(p , 0);
                             cancel();
                         }
                         v = dir.clone().midpoint(dir2).normalize();
@@ -132,6 +135,7 @@ public class AquariumCuttar extends Continuous {
                     if(Utilities.getBetweenNumber(count , 3, 3)  && Continuous == 3) {
                         Vector dir2 = p.getEyeLocation().getDirection();
                         if(dir2.equals(dir)) {
+                            setContinuous(p , 0);
                             cancel();
                         }
                         v = dir.clone().midpoint(dir2).normalize();
@@ -175,6 +179,7 @@ public class AquariumCuttar extends Continuous {
                                 if(a % 2 == 0) {
                                     if(a == 8) {
                                         if(!Utilities.ThroughBlocks.contains(acloc.getBlock().getType())) {
+                                            setContinuous(p , 0);
                                             cancel();
                                             return;
                                         }
@@ -212,6 +217,7 @@ public class AquariumCuttar extends Continuous {
                                 }
                                 Utilities.addDamage(ent , 20 , p , slot);
                             }
+                            setContinuous(p , 0);
                         }
                     }
                     if((count == 9 && Continuous != 3) || count == 27) {

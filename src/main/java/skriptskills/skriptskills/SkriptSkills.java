@@ -20,6 +20,7 @@ public final class SkriptSkills extends JavaPlugin {
         for(SkriptAddon a : Skript.getAddons()) {
             if(a.plugin.getName().equals(plugin.getName())) {
                 already = true;
+                addon = a;
                 break;
             }
         }
