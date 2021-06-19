@@ -16,6 +16,7 @@ import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
+import skriptskills.skriptskills.Continuous;
 import skriptskills.skriptskills.SkriptSkills;
 import skriptskills.skriptskills.Utilities;
 
@@ -23,7 +24,7 @@ import javax.annotation.Nullable;
 import java.util.HashSet;
 import java.util.Objects;
 
-public class AquariumCuttar extends Effect {
+public class AquariumCuttar extends Continuous {
     private Expression<Player> player;
 
     static {
@@ -56,10 +57,10 @@ public class AquariumCuttar extends Effect {
                 Vector v;
                 Vector u;
                 double block = 5;
-                int Continuous = 0;
+                int Continuous = getContinuous(p , 4 * 20);
                 @Override
                 public void run() {
-                    if(Utilities.getBetweenNumber(count , 3, 3) && Continuous == 0) {
+                    if(Utilities.getBetweenNumber(count , 3, 3) && Continuous == 1) {
                         Vector dir2 = p.getEyeLocation().getDirection();
                         if(dir2.equals(dir)) {
                             cancel();
@@ -68,7 +69,7 @@ public class AquariumCuttar extends Effect {
                         u = dir2.clone().subtract(dir).normalize();
                         p.getWorld().playSound(p.getLocation() , Sound.ENTITY_WITHER_SHOOT , 2 ,2);
                     }
-                    if(Utilities.getBetweenNumber(count , 4 , 9) && Continuous == 0) {
+                    if(Utilities.getBetweenNumber(count , 4 , 9) && Continuous == 1) {
                         for(int i = 0 ; i < 2 ; i++) {
                             angle += 15;
                             for(double r = 0.3; r <= 0.8 ; r += 0.1) {
@@ -84,13 +85,13 @@ public class AquariumCuttar extends Effect {
                                         if(!Utilities.getNoTargetEntityType2(ent , p , slot)) {
                                             continue;
                                         }
-                                        Utilities.addDamage(ent , 20 , p , slot);
+                                        Utilities.addDamage(ent , 5 , p , slot);
                                     }
                                 }
                             }
                         }
                     }
-                    if(Utilities.getBetweenNumber(count , 3, 3) && Continuous == 1) {
+                    if(Utilities.getBetweenNumber(count , 3, 3) && Continuous == 2) {
                         Vector dir2 = p.getEyeLocation().getDirection();
                         if(dir2.equals(dir)) {
                             cancel();
@@ -99,7 +100,7 @@ public class AquariumCuttar extends Effect {
                         u = dir2.clone().subtract(dir).normalize();
                         p.getWorld().playSound(p.getLocation() , Sound.ENTITY_WITHER_SHOOT , 2 ,2);
                     }
-                    if(Utilities.getBetweenNumber(count , 4 , 9) && Continuous == 1) {
+                    if(Utilities.getBetweenNumber(count , 4 , 9) && Continuous == 2) {
                         for(int i = 0 ; i < 2 ; i++) {
                             angle += 15;
                             for(double r = 0.3; r <= 0.8 ; r += 0.1) {
@@ -122,19 +123,13 @@ public class AquariumCuttar extends Effect {
                                         if(!Utilities.getNoTargetEntityType2(ent , p , slot)) {
                                             continue;
                                         }
-                                        Utilities.addDamage(ent , 15 , p , slot);
-                                    }
-                                    for(LivingEntity ent : Utilities.getNearByLivingEntityFromRadius(acloc2 , 2)) {
-                                        if(!Utilities.getNoTargetEntityType2(ent , p , slot)) {
-                                            continue;
-                                        }
-                                        Utilities.addDamage(ent , 15 , p , slot);
+                                        Utilities.addDamage(ent , 5 , p , slot);
                                     }
                                 }
                             }
                         }
                     }
-                    if(Utilities.getBetweenNumber(count , 3, 3)  && Continuous == 2) {
+                    if(Utilities.getBetweenNumber(count , 3, 3)  && Continuous == 3) {
                         Vector dir2 = p.getEyeLocation().getDirection();
                         if(dir2.equals(dir)) {
                             cancel();
@@ -143,7 +138,7 @@ public class AquariumCuttar extends Effect {
                         u = dir2.clone().subtract(dir).normalize();
                         p.getWorld().playSound(p.getLocation() , Sound.ENTITY_WITHER_SHOOT , 2 ,2);
                     }
-                    if(Utilities.getBetweenNumber(count , 4 , 9)  && Continuous == 2) {
+                    if(Utilities.getBetweenNumber(count , 4 , 9)  && Continuous == 3) {
                         for(int i = 0 ; i < 3 ; i++) {
                             angle += 10;
                             for(double r = 0.3; r <= 0.8 ; r += 0.1) {
@@ -159,13 +154,13 @@ public class AquariumCuttar extends Effect {
                                         if(!Utilities.getNoTargetEntityType2(ent , p , slot)) {
                                             continue;
                                         }
-                                        Utilities.addDamage(ent , 15 , p , slot);
+                                        Utilities.addDamage(ent , 5 , p , slot);
                                     }
                                 }
                             }
                         }
                     }
-                    if(Utilities.getBetweenNumber(count , 9 , 27) && Continuous == 2) {
+                    if(Utilities.getBetweenNumber(count , 9 , 27) && Continuous == 3) {
                         for(int s = 1 ; s <= 2 ; s++) {
                             block += 0.7;
                             angle = 270 + (s == 1 ? 0 : 5);
@@ -188,7 +183,7 @@ public class AquariumCuttar extends Effect {
                                         if(!Utilities.getNoTargetEntityType2(ent , p , slot)) {
                                             continue;
                                         }
-                                        Utilities.addDamage(ent , 15 , p , slot);
+                                        Utilities.addDamage(ent , 10 , p , slot);
                                     }
                                 }
                             }
@@ -219,7 +214,7 @@ public class AquariumCuttar extends Effect {
                             }
                         }
                     }
-                    if((count == 9 && Continuous != 2) || count == 27) {
+                    if((count == 9 && Continuous != 3) || count == 27) {
                         cancel();
                     }
                     count++;

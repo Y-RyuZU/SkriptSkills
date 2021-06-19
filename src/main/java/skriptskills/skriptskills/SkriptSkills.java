@@ -23,7 +23,6 @@ public final class SkriptSkills extends JavaPlugin {
                 break;
             }
         }
-        //Functions.getFunction("a").execute();
         if(!already) { addon = Skript.registerAddon(this); }
         try {
             addon.loadClasses("skriptskills.skriptskills", "Skills");
