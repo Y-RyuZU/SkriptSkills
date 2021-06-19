@@ -1,0 +1,7 @@
+name: SkriptSkills
+version: ${project.version}
+main: skriptskills.skriptskills.SkriptSkills
+api-version: 1.13
+description: Skriptで実行できるたくさんのSkillを実装するPluginです
+depend:
+  - Skript
